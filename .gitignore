@@ -24,4 +24,5 @@ yarn-error.log*
 
 *.idea
 *.env
-/backend/node_modules/
+/**/dist
+
