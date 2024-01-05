@@ -13,6 +13,11 @@ const baseUrl = (import.meta.env.REACT_APP_BASE_URL || 'http://localhost:8000') 
 //   return {todoList, isPending, error};
 // }
 
+const getTodos = async ():Promise<Todo[]>  => {
+  return await axios.get(baseUrl)
+      .then(res => res.data);
+}
+
 const createTodo = async (body: TodoInterface) => {
   return await axios.post(baseUrl, body);
 }
@@ -26,7 +31,7 @@ const deleteTodo = async (id: string) => {
 }
 
 export {
-  // getAllTodos,
+  getTodos,
   createTodo,
   updateTodo,
   deleteTodo,
