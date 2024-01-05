@@ -30,10 +30,10 @@ const Home = () => {
       </div>
 
       <div className="mt-6 border-t border-gray-100">
-        {todoList && todoList.length > 0 && todoList.map((task, id) => (
-          <dl className="divide-y divide-gray-100" key={id}>
+        {todoList && todoList.length > 0 && todoList.map((task) => (
+          <dl className="divide-y divide-gray-100" key={task._id}>
             <div className="px-4 py-6 sm:flex sm:justify-between sm:items-center" key={task._id}>
-              <div className="sm:flex-1 sm:mr-4">
+              <div className="sm:flex-1 sm:mr-4" onClick={() => window.location.href = `/update/${task._id}`} style={{ cursor: 'pointer' }}>
                 <dt className="text-lg font-medium leading-6 text-gray-900">{task.title}</dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700">{task.details}</dd>
               </div>

@@ -24,6 +24,24 @@ class TodoController {
     }
   }
 
+  public getTodoTaskById = async (req: Request, res: Response) => {
+    try {
+      const taskId = req?.params?.id;
+      if (!taskId) {
+        throw new Error(`Valid task id is not provided: ${taskId}`);
+      }
+
+      logger.info(`Getting task with id: ${taskId}`);
+
+      const task = await this.toDoModel.findById(taskId);
+      logger.info(`Task: ${JSON.stringify(task)}`);
+
+      res.send(task);
+    } catch (err) {
+      InternalServerException(`Error in getting task: ${err}`, res);
+    }
+  }
+
   public addTodoTask = async (req: Request, res: Response) => {
     try {
       logger.info(`Adding new task: ${JSON.stringify(req.body)}`);
