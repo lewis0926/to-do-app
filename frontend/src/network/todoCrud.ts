@@ -1,7 +1,7 @@
 import { Todo, TodoInterface } from "../models/Todo";
 import axios from "axios";
 
-const baseUrl = (import.meta.env.REACT_APP_BASE_URL || 'http://localhost:8000') + '/todo';
+const baseUrl = (import.meta.env.VITE_BACKEND_BASE_URL || 'http://localhost:8000') + '/todo';
 
 const getTodos = async ():Promise<Todo[]>  => {
   return await axios.get(baseUrl)
